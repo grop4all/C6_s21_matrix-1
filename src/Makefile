@@ -46,4 +46,5 @@ lint:
 	cp ./../materials/linters/.clang-format .
 	clang-format -n *.c *.h
 	clang-format -i *.c *.h
+	clang-format -i *.c *.h
 	rm .clang-format
