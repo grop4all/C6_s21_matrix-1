@@ -31,8 +31,7 @@ clean:
 	rm -rf *.o *.out *.a
 	rm -rf *.gcda *.gcno
 	rm -rf coverage coverage.info 
-	rm -rf CPPLINT.cfg cpplint.py
-
+	
 leaks: test
 	gcc -g test_matrix.c s21_matrix.o -o check.out -lcheck $(LINUX_LIBS)
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes --show-reachable=no ./check.out
@@ -44,6 +43,7 @@ cppcheck:
 	cppcheck --enable=all --suppress=missingIncludeSystem ./*.c
 
 lint:
-	cp ./../materials/linters/CPPLINT.cfg ./
-	cp ./../materials/linters/cpplint.py ./
-	python3 cpplint.py --extensions=c *.c *.h
+	cp ./../materials/linters/.clang-format .
+	clang-format -n *.c *.h
+	clang-format -i *.c *.h
+	rm .clang-format

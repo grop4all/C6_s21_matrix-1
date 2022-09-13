@@ -1,8 +1,8 @@
 #ifndef SRC_S21_MATRIX_H_
 #define SRC_S21_MATRIX_H_
 #include <math.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define OK 0
 #define ErrorMatrixpParam 1
@@ -15,13 +15,11 @@
 #define fk(line) for (int k = 0; k < line; ++k)
 #define S21_EPS 1E-7
 
-
 typedef struct matrix_struct {
-    double** matrix;
-    int rows;
-    int columns;
+  double **matrix;
+  int rows;
+  int columns;
 } matrix_t;
-
 
 int s21_create_matrix(int rows, int columns, matrix_t *result);
 void s21_remove_matrix(matrix_t *A);
@@ -34,7 +32,6 @@ int s21_transpose(matrix_t *A, matrix_t *result);
 int s21_calc_complements(matrix_t *A, matrix_t *result);
 int s21_determinant(matrix_t *A, double *result);
 int s21_inverse_matrix(matrix_t *A, matrix_t *result);
-
 
 int just_determinant(matrix_t *A);
 void select_minor_matrix(matrix_t *A, matrix_t *minor, int i, int j);
